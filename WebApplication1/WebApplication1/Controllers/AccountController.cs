@@ -144,6 +144,7 @@ namespace WebApplication1.Controllers
 
         //
         // POST: /Account/Register
+        // https://stackoverflow.com/questions/13621934/validateantiforgerytoken-purpose-explanation-and-example
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
