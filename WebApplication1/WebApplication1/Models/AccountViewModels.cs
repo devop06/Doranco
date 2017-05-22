@@ -53,6 +53,13 @@ namespace WebApplication1.Models
         [EmailAddress]
         public string Email { get; set; }
 
+
+        [Required]
+        [Display(Name = "Pseudo")]
+        [EmailAddress]
+        public string Pseudo { get; set; }
+
+
         [Required]
         [DataType(DataType.Password)]
         [Display(Name = "Mot de passe")]
