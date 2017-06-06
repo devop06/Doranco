@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="fifa" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=PC-B-3-227;Initial Catalog=fifa;Integrated Security=True;Encrypt=False;TrustServerCertificate=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="fifaConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.[User]" Member="User">
+    <Type Name="User">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="pseudo" Type="System.String" DbType="VarChar(70) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="nom" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="prenom" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="adresse" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="codePostale" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="ville" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="password" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="mail" Type="System.Data.Linq.Binary" DbType="VarBinary(50)" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+</Database>

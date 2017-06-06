@@ -9,7 +9,7 @@ namespace WebApplication1.Controllers
     [Authorize]
     public class HomeController : Controller
     {
-        [Authorize]
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View();

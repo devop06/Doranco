@@ -1,0 +1,40 @@
+﻿@model WebApplication1.ViewModel.ConnexionViewModel
+
+@{
+    ViewBag.Title = "Connexion utilisateur";
+}
+
+<h2>Authentifiez-vous :)</h2>
+     @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+    {
+       <div class="form-group">
+           @Html.AntiForgeryToken()
+
+           @Html.LabelFor(m => m.Identifiant)
+
+           @Html.EditorFor(m => m.Identifiant)
+       </div>
+        <div class="form-group">
+        @Html.LabelFor(m => m.Password)
+        @Html.PasswordFor(m => m.Password)
+       
+
+
+       
+            @if (ViewBag.Error != null)
+            {
+                <div class="alert alert-info">
+                    <strong>@ViewBag.Error</strong><a href="/home/register" class="alert-link"> <br />Créer un compte</a>.
+                </div>
+            }
+
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="S'authentifier" />
+        </div>
+     }
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
