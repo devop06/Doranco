@@ -6,13 +6,15 @@ using System.Web.Mvc;
 
 namespace WebApplication1.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
+        [Authorize]
         public ActionResult Index()
         {
             return View();
         }
-
+       
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
