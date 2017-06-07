@@ -96,7 +96,7 @@ namespace WebApplication1.Models.Entity
 		
 		private string _password;
 		
-		private System.Data.Linq.Binary _mail;
+		private string _mail;
 		
     #region Définitions de méthodes d'extensibilité
     partial void OnLoaded();
@@ -118,7 +118,7 @@ namespace WebApplication1.Models.Entity
     partial void OnvilleChanged();
     partial void OnpasswordChanging(string value);
     partial void OnpasswordChanged();
-    partial void OnmailChanging(System.Data.Linq.Binary value);
+    partial void OnmailChanging(string value);
     partial void OnmailChanged();
     #endregion
 		
@@ -287,8 +287,8 @@ namespace WebApplication1.Models.Entity
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_mail", DbType="VarBinary(50)", UpdateCheck=UpdateCheck.Never)]
-		public System.Data.Linq.Binary mail
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_mail", DbType="VarChar(50)")]
+		public string mail
 		{
 			get
 			{

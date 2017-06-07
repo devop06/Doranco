@@ -61,5 +61,30 @@ namespace WebApplication1.Controllers
             FormsAuthentication.SignOut();
             return RedirectToAction("Index", controllerName: "Home");
         }
+
+        [Authorize]
+        public ActionResult Profil()
+        {
+            string _pseudo = HttpContext.User.Identity.Name;
+            User _u =  ListeUser.FirstOrDefault(u => u.pseudo == _pseudo);
+            if (_u == null)
+                 return View("~/Views/Shared/Error.cshtml");
+            else
+            {
+                UserViewModel _uViewModel = new UserViewModel()
+                {
+                    Nom = _u.nom,
+                    Ville = _u.ville,
+                    Adresse = _u.adresse,
+                    CodePostale = _u.codePostale,
+                    Mail = _u.mail,
+                    Pseudo = _u.pseudo,
+                    Prenom = _u.prenom
+
+                };
+                return View(_uViewModel);
+            }
+                
+        }
     }
 }
