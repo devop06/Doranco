@@ -55,6 +55,7 @@ namespace WebApplication1.Controllers
             return RedirectToAction("Index", controllerName: "Home");
         }
 
+       
         [Authorize]
         public ActionResult Profil()
         {
@@ -79,8 +80,12 @@ namespace WebApplication1.Controllers
             }
         }
 
+        /// <summary>
+        /// ne change pas les valeurs dans la liste
+        /// </summary>
+        /// <returns></returns>
         [Authorize]
-        [ValidateAntiForgeryToken]
+ //       [ValidateAntiForgeryToken]
         [HttpPost]
         public ActionResult Profil(UserViewModel _userViewModel)
         {
