@@ -5,8 +5,8 @@
 }
 
 <h2>Authentifiez-vous :)</h2>
-     @using (Html.BeginForm("Login", "Account", FormMethod.Post))
-    {
+     @using (Html.BeginForm("Login", "Account", new { ReturnUrl = Request.QueryString["ReturnUrl"] }))
+     {
        <div class="form-group">
            @Html.AntiForgeryToken()
 

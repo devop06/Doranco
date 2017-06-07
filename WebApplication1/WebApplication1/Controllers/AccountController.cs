@@ -3,30 +3,62 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
+using WebApplication1.Models.Entity;
 using WebApplication1.ViewModel;
 
 namespace WebApplication1.Controllers
 {
     public class AccountController : Controller
     {
+        private List<User> ListeUser;
+
+        public AccountController()
+        {
+            ListeUser = new List<Models.Entity.User>();
+            ListeUser.Add( new User() { id = 1, pseudo = "toto", password = "test" }  );
+        }
         // GET: Account
-        [AllowAnonymous]
         public ActionResult Login()
         {
             return View();
         }
 
-        [HttpPost]
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="_v"></param>
+        /// <param name="returnUrl">Url désiré avant la redirection sur page de log</param>
+        /// <returns></returns>
         [ValidateAntiForgeryToken]
-        [AllowAnonymous]
-        public ActionResult Login(ConnexionViewModel _v)
+        [HttpPost]
+        public ActionResult Login(ConnexionViewModel _v, string ReturnUrl)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                ViewBag.Error = "Il semble que votre compte soit inexistant";
                 return View(_v);
             }
-            _v.ToString();
+            else
+            {
+                if (_v.Identifiant == ListeUser[0].pseudo && _v.Password == ListeUser[0].password)
+                {
+                    FormsAuthentication.SetAuthCookie(_v.Identifiant, false);
+                    if (!string.IsNullOrWhiteSpace(ReturnUrl) && Url.IsLocalUrl(ReturnUrl))
+                        return Redirect(ReturnUrl);
+                    else
+                        return RedirectToAction("Index", controllerName: "Home");
+                }
+                else
+                {
+                    ViewBag.Error = "Il semble que votre compte soit inexistant";
+                    return View(_v);
+                }
+            }    
+        }
+            
+        public ActionResult LogOff()
+        {
+            FormsAuthentication.SignOut();
             return RedirectToAction("Index", controllerName: "Home");
         }
     }
