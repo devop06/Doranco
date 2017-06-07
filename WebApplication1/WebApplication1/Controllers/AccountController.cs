@@ -10,14 +10,7 @@ using WebApplication1.ViewModel;
 namespace WebApplication1.Controllers
 {
     public class AccountController : Controller
-    {
-        private List<User> ListeUser;
-
-        public AccountController()
-        {
-            ListeUser = new List<Models.Entity.User>();
-            ListeUser.Add( new User() { id = 1, pseudo = "toto", password = "test" }  );
-        }
+    {  
         // GET: Account
         public ActionResult Login()
         {
@@ -40,7 +33,7 @@ namespace WebApplication1.Controllers
             }
             else
             {
-                if (_v.Identifiant == ListeUser[0].pseudo && _v.Password == ListeUser[0].password)
+                if (_v.Identifiant == UserData.GetLesUtilisateurs()[0].pseudo && _v.Password == UserData.GetLesUtilisateurs()[0].password)
                 {
                     FormsAuthentication.SetAuthCookie(_v.Identifiant, false);
                     if (!string.IsNullOrWhiteSpace(ReturnUrl) && Url.IsLocalUrl(ReturnUrl))
@@ -66,7 +59,7 @@ namespace WebApplication1.Controllers
         public ActionResult Profil()
         {
             string _pseudo = HttpContext.User.Identity.Name;
-            User _u =  ListeUser.FirstOrDefault(u => u.pseudo == _pseudo);
+            User _u = UserData.GetLesUtilisateurs().FirstOrDefault(u => u.pseudo == _pseudo);
             if (_u == null)
                  return View("~/Views/Shared/Error.cshtml");
             else
@@ -84,7 +77,26 @@ namespace WebApplication1.Controllers
                 };
                 return View(_uViewModel);
             }
-                
+        }
+
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public ActionResult Profil(UserViewModel _userViewModel)
+        {
+            if(ModelState.IsValid)
+            {
+                User _u = UserData.GetLesUtilisateurs().Single(u => u.pseudo == _userViewModel.Pseudo);
+                _u.prenom = _userViewModel.Prenom;
+                _u.nom = _userViewModel.Nom;
+                _u.ville = _userViewModel.Ville;
+                _u.mail = _userViewModel.Mail;
+                _u.adresse = _userViewModel.Adresse;
+                ViewBag.Sucess = "Profil modifié avec succès !";
+
+                return View(_userViewModel);
+            }
+            return View(_userViewModel); 
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
@@ -8,24 +9,34 @@ namespace WebApplication1.ViewModel
 {
     public class UserViewModel : IValidatableObject
     {
-        public string Pseudo;
+        [DisplayName("Pseudonyme :")]
+        public string Pseudo { get; set; }
 
-        [EmailAddress(ErrorMessage = "Votre mail n'est pas valide")]
-        public string Mail; 
+        [DisplayName("Email  :")]
+        public string Mail { get; set; }
 
-        public string Nom;
+        [DisplayName("Ton nom de famille :")]
+        public string Nom { get; set; }
 
-        public string Prenom;
+        [DisplayName("Ton prénom :")]
+        public string Prenom { get; set; }
 
-        public string Adresse;
+        [DisplayName("Ton adresse :")]
+        public string Adresse { get; set; }
 
-        public string CodePostale;
+        [DisplayName("Votre adresse :")]
+        public string CodePostale { get; set; }
 
-        public string Ville;
+        [DisplayName("Dans quelle ville habites-tu ?")]
+        public string Ville { get; set; }
 
-        public string Password;
+        [DisplayName("Saisis un nouveau mot de passe :")]
+        [Required]
+        public string Password { get; set; }
 
-        public string VerifPassword;
+        [DisplayName("Saisis à nouveau le mot de passe :")]
+        [Required]
+        public string VerifPassword { get; set; }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
