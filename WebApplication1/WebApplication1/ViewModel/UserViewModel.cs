@@ -12,6 +12,8 @@ namespace WebApplication1.ViewModel
         [DisplayName("Pseudonyme :")]
         public string Pseudo { get; set; }
 
+        [DataType(DataType.EmailAddress)]
+        [EmailAddress]
         [DisplayName("Email  :")]
         public string Mail { get; set; }
 

@@ -9,66 +9,69 @@
     <hr />
     @using (Html.BeginForm("Profil", "Account", method: FormMethod.Post))
     {
-        @Html.AntiForgeryToken()
-        <div class="form-group">
-            @Html.LabelFor(m => m.Pseudo)
 
-            @Html.TextBoxFor(m => m.Pseudo, new { @readonly = "readonly", @class = "form-control" })
-        </div>
+            @Html.AntiForgeryToken()
+            <div class="form-group row">
+                @Html.LabelFor(m => m.Pseudo, new { @class = "col-2 col-form-label" })
+                <div class="">
+                    @Html.TextBoxFor(m => m.Pseudo, new { @readonly = "readonly", @class = "form-control" })
+                </div>
+            </div>
 
-         <div class="form-group">
-             @Html.LabelFor(m => m.Mail)
-
-             @Html.TextBoxFor(m => m.Mail,  new { @class = "form-control" } )
-             @Html.ValidationMessageFor(m => m.Mail)
-         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(m => m.Adresse)
-
-            @Html.TextBoxFor(m => m.Adresse, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Adresse)
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(m => m.CodePostale)
-
-            @Html.TextBoxFor(m => m.CodePostale, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.CodePostale)
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(m => m.Nom)
-
-            @Html.TextBoxFor(m => m.Nom, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Nom)
-        </div>
+            <div class="form-group row">
+                @Html.LabelFor(m => m.Mail, new { @class = "col-2 col-form-label" })
+                <div class="">
+                    @Html.TextBoxFor(m => m.Mail, new { @class = "form-control" })
+                </div>
+                @Html.ValidationMessageFor(m => m.Mail)
+            </div>
 
 
-        <div class="form-group">
-            @Html.LabelFor(m => m.Prenom)
+            <div class="form-group">
+                @Html.LabelFor(m => m.Adresse)
 
-            @Html.TextBoxFor(m => m.Prenom, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Prenom)
-        </div>
+                @Html.TextBoxFor(m => m.Adresse, new { @class = "form-group row" })
+                @Html.ValidationMessageFor(m => m.Adresse)
+            </div>
 
-        <div class="form-group">
-            @Html.LabelFor(m => m.Password)
+            <div class="form-group">
+                @Html.LabelFor(m => m.CodePostale)
 
-           @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Password)
-        </div>
+                @Html.TextBoxFor(m => m.CodePostale, new { @class = "form-group row" })
+                @Html.ValidationMessageFor(m => m.CodePostale)
+            </div>
 
-        <div class="form-group">
-            @Html.LabelFor(m => m.VerifPassword)
+            <div class="form-group">
+                @Html.LabelFor(m => m.Nom)
 
-            @Html.PasswordFor(m => m.VerifPassword, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.VerifPassword)
-        </div>
-        <div class="form-group">
-            <input type="submit" value="Modifier" class="btn"/>
-        </div>
-        
+                @Html.TextBoxFor(m => m.Nom, new { @class = "form-group row" })
+                @Html.ValidationMessageFor(m => m.Nom)
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Prenom)
+
+                @Html.TextBoxFor(m => m.Prenom, new { @class = "form-group row" })
+                @Html.ValidationMessageFor(m => m.Prenom)
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Password)
+
+                @Html.PasswordFor(m => m.Password, new { @class = "form-group row" })
+                @Html.ValidationMessageFor(m => m.Password)
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.VerifPassword)
+
+                @Html.PasswordFor(m => m.VerifPassword, new { @class = "form-group row" })
+                @Html.ValidationMessageFor(m => m.VerifPassword)
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Modifier" class="btn" />
+            </div>
     }
      
     @if (ViewBag.Sucess != null)
@@ -85,3 +88,6 @@
     @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+
+
+

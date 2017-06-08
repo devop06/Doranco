@@ -96,12 +96,20 @@ namespace WebApplication1.Controllers
                 _u.nom = _userViewModel.Nom;
                 _u.ville = _userViewModel.Ville;
                 _u.mail = _userViewModel.Mail;
+                _u.password = _userViewModel.Password;
+                _u.codePostale = _userViewModel.CodePostale;
                 _u.adresse = _userViewModel.Adresse;
                 ViewBag.Sucess = "Profil modifié avec succès !";
 
                 return View(_userViewModel);
             }
             return View(_userViewModel); 
+        }
+
+
+        public ActionResult CreateAccount()
+        {
+            return View((new CreateViewModel()));
         }
     }
 }
