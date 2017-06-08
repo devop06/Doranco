@@ -8,11 +8,10 @@ namespace WebApplication1
 {
     public  static class UserData
     {
-        public static List<Models.Entity.User> GetLesUtilisateurs()
+
+        public static List<Models.Entity.User> ListUser = new List<User>()
         {
-            return new List<User>()
-            {
-                new User()
+             new User()
                 {
                   id = 1,
                 pseudo = "toto",
@@ -23,8 +22,12 @@ namespace WebApplication1
                 codePostale = "75012",
                 nom = "nom",
                 prenom = "prenom"
-                }  
-            };
+                }
+        };
+
+        public static List<Models.Entity.User> GetLesUtilisateurs()
+        {
+            return ListUser;
          }
 
     }
