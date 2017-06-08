@@ -19,7 +19,6 @@ namespace WebApplication1.ViewModel
         [Required]
         [StringLength(30, ErrorMessage = "Ton mot de passe doit contenir au moins {0} caractères", MinimumLength = 6)]
         [DisplayName("Un mot de passe :")]
-        [RegularExpression(@"^(?=.*[a - z])(?=.*[A - Z])(?=.*\d)(?=.*[$@$!% *? &])[A - Za - z\d$@$!% *? &]{6,}")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
         [Required]

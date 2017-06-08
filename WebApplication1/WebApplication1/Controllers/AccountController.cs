@@ -111,5 +111,20 @@ namespace WebApplication1.Controllers
         {
             return View((new CreateViewModel()));
         }
+
+        [HttpPost]
+        public ActionResult CreateAccount(CreateViewModel _createViewModel)
+        {
+           
+            var  _u =  (from util in UserData.GetLesUtilisateurs() where util.mail == _createViewModel.Email || util.pseudo == _createViewModel.Pseudo select util).ToList();
+            if (_u.Count() > 0)
+            {
+                // voir affichage dans la vue
+                ModelState.AddModelError("mailExist", "ce mail ou ce pseudo, ou il est déjà utilisé");
+                return View(_createViewModel);
+            }    
+            else
+                 return RedirectToAction("index", "home");
+        }
     }
 }
