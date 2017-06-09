@@ -1,14 +1,86 @@
-﻿@{
+﻿
+
+@{
     ViewBag.Title = "FIFA";
 }
 
-<div class="jumbotron">
-    <h1>Les prochains tournois</h1>
-    <p>Liste des tournois pour les 5 prochains jours...</p>
+    <img src="~/fifa17.png" width="75" height="75"/>
+    <div id="accordion">
+     <h3 class="ui-accordion-header">Tournois 1</h3>
+    <div>
+        <p>
+            Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer
+            ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit
+            amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut
+            odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.
+        </p>
+    </div>
+    <h3>Tournois 2</h3>
+    <div>
+        <p>
+            Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet
+            purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor
+            velit, faucibus interdum tellus libero ac justo. Vivamus non quam. In
+            suscipit faucibus urna.
+        </p>
+    </div>
+    <h3>Tournois 3</h3>
+    <div>
+        <p>
+            Nam enim risus, molestie et, porta ac, aliquam ac, risus. Quisque lobortis.
+            Phasellus pellentesque purus in massa. Aenean in pede. Phasellus ac libero
+            ac tellus pellentesque semper. Sed ac felis. Sed commodo, magna quis
+            lacinia ornare, quam ante aliquam nisi, eu iaculis leo purus venenatis dui.
+        </p>
+        <ul>
+            <li>List item one</li>
+            <li>List item two</li>
+            <li>List item three</li>
+        </ul>
+    </div>
+    <h3>Tournois 4</h3>
+    <div>
+        <p>
+            Cras dictum. Pellentesque habitant morbi tristique senectus et netus
+            et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in
+            faucibus orci luctus et ultrices posuere cubilia Curae; Aenean lacinia
+            mauris vel est.
+        </p>
+        <p>
+            Suspendisse eu nisl. Nullam ut libero. Integer dignissim consequat lectus.
+            Class aptent taciti sociosqu ad litora torquent per conubia nostra, per
+            inceptos himenaeos.
+        </p>
+    </div>
 </div>
+
 
 <div class="row">
     <div class="col-lg-offset-2 col-md-offset-1 col-lg-8 col-md-9 col-lg-offset-2 col-md-offset-1">
       <img src="https://www.thesun.co.uk/wp-content/uploads/2017/03/fifa-17-2.jpg?strip=all&w=742&quality=100" class="img-responsive"/>
     </div>
 </div>
+
+@section css
+{
+    <link rel="stylesheet" href="~/Content/Slide.css" />
+    <link rel="stylesheet" href="~/Content/themes/base/accordion.css">
+
+}
+
+@section scripts
+{
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+        integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+        crossorigin="anonymous"></script>
+<script>
+    $(function () {
+        $("#accordion").accordion(
+            {
+                header: "h3",
+                icons: { "header": "ui-icon-plus", "activeHeader": "ui-icon-minus" }
+            }
+        );
+    });
+</script>
+}

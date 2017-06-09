@@ -3,18 +3,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewBag.Title - World of Competition</title>
 
-    <link rel="icon" href="/fifa17.png" sizes="16x16">
-    <link rel="icon" href="/fifa17.png" sizes="32x32">
-    <link rel="icon" href="/fifa17.png" sizes="48x48">
-    <link rel="icon" href="/fifa17.png" sizes="64x64">
-    <link rel="icon" href="/fifa17.png" sizes="128x128">
+    <link rel="icon" href="/fifa17.png" sizes="16x16" />
+    <link rel="icon" href="/fifa17.png" sizes="32x32" />
+    <link rel="icon" href="/fifa17.png" sizes="48x48" />
+    <link rel="icon" href="/fifa17.png" sizes="64x64" />
+    <link rel="icon" href="/fifa17.png" sizes="128x128" />
     @RenderSection("css", false);
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -25,10 +24,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+                
                 @Html.ActionLink("Fifa Tournament Bet", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+                         
                     <li>@Html.ActionLink("Accueil", "Index", "Home")</li>
                     <li>@Html.ActionLink("À propos de", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
