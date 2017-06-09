@@ -33,9 +33,10 @@ namespace WebApplication1.Controllers
             }
             else
             {
-                if (_v.Identifiant == UserData.GetLesUtilisateurs()[0].pseudo && _v.Password == UserData.GetLesUtilisateurs()[0].password)
+                User _u = UserData.GetLesUtilisateurs().FirstOrDefault(util => util.pseudo == _v.Identifiant && util.password == _v.Password || util.mail == _v.Identifiant);
+                if (_u != null)
                 {
-                    FormsAuthentication.SetAuthCookie(_v.Identifiant, false);
+                    FormsAuthentication.SetAuthCookie(_u.pseudo, false);
                     if (!string.IsNullOrWhiteSpace(ReturnUrl) && Url.IsLocalUrl(ReturnUrl))
                         return Redirect(ReturnUrl);
                     else
@@ -124,7 +125,12 @@ namespace WebApplication1.Controllers
                 return View(_createViewModel);
             }    
             else
-                 return RedirectToAction("index", "home");
+            {
+                UserData.GetLesUtilisateurs().Add(
+                    new Models.Entity.User { mail = _createViewModel.Email, pseudo = _createViewModel.Pseudo, password = _createViewModel.Password });
+                return RedirectToAction("index", "home");
+            }
+                
         }
     }
 }
